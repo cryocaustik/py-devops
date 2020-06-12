@@ -1,0 +1,11 @@
+.vscode/
+.pyenv/
+.venv/
+__pycache__/
+*/.acrhive/*
+*/__pycache__/*
+*.db
+.env
+
+!.env.example
+!*/.gitkeep
