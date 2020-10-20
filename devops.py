@@ -169,6 +169,7 @@ class DevOps:
         while response:
             for p in response.value:
                 projects[p.name] = p
+                print(p)
 
             if response.continuation_token:
                 response = client.get_projects(response.continuation_token)

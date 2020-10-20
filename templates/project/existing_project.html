@@ -1,0 +1,74 @@
+{% extends "base.html" %} 
+
+{% block header %}
+<h1>Existing Projects</h1>
+{% endblock header %} 
+{% block content %} 
+
+{% if errors %}
+  {% for error in errors %}
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Organization Info</h3>
+  </div>
+  <!-- /.card-header -->
+  <!-- form start -->
+  <form role="form" method="POST">
+    <div class="card-body">
+      <div class="form-group">
+        <input type="text" class="form-control" name="org_name" id="org_name" placeholder="Organization Name">
+      </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Projects</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    {% if projects %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Visibility</th>
+            <th>Last Update</th>
+            <th style="width: 40px;">Label</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for project in projects %}
+            <tr>
+              <td>{{ projects[project].id }}</td>
+              <td>{{ projects[project].name }}</td>
+              <td>{{ projects[project].visibility }}</td>
+              <td>{{ projects[project].last_update_time }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      {% if projects and projects|length == 0 %}
+        No projects found
+      {% else %}
+        Specify an Organization name above to pull Projects.
+      {% endif %} 
+    {% endif %} 
+    </div>
+  </div>
+
+{% endblock content %}

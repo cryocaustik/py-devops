@@ -10,6 +10,8 @@ black = "==19.10b0"
 [packages]
 python-dotenv = "*"
 azure-devops = "==6.0.0b2"
+flask = "*"
+flask-restful = "*"
 
 [requires]
 python_version = "3.8"
